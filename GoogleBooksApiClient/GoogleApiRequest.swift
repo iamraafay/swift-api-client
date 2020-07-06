@@ -39,7 +39,7 @@ public struct GoogleApiRequest {
     
     private static func token(params: [String:String]) -> URLRequest {
         let encoded = params
-            .flatMap({ param in
+            .compactMap({ param in
                 guard
                     let key = param.key.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
                     let value = param.value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)

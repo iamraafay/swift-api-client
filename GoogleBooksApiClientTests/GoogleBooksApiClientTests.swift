@@ -3,10 +3,7 @@ import XCTest
 
 class GoogleBooksApiClientTests: XCTestCase {
     
-    private let client: GoogleBooksApiClient = { _ -> GoogleBooksApiClient in
-        let session = URLSession.shared
-        return GoogleBooksApiClient(session: session)
-    }()
+    private let client: GoogleBooksApiClient = GoogleBooksApiClient(session: URLSession.shared)
     
     override func setUp() {
         super.setUp()

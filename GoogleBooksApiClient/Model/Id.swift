@@ -22,4 +22,7 @@ extension Id: Hashable {
         return value.hashValue
     }
     
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(value)
+    }
 }

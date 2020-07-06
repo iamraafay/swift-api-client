@@ -7,7 +7,7 @@ extension Bookshelves: Deserializable {
             let kind = dict["kind"] as? String, kind == BooksKind.bookshelves.description,
             let items = dict["items"] as? [[AnyHashable:Any]]
             else { return nil }
-        return Bookshelves(items: items.flatMap(Bookshelf.create))
+        return Bookshelves(items: items.compactMap(Bookshelf.create))
     }
     
 }
