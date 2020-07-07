@@ -7,7 +7,7 @@ extension Volumes: Deserializable {
             let kind = dict["kind"] as? String, kind == BooksKind.volumes.description,
             let items = dict["items"] as? [[AnyHashable:Any]]
             else { return nil }
-        return Volumes(totalItems: dict["totalItems"] as? Int,items: items.flatMap(Volume.create))
+        return Volumes(totalItems: dict["totalItems"] as? Int,items: items.compactMap(Volume.create))
     }
     
 }
@@ -58,7 +58,7 @@ extension Volume.VolumeInfo {
         let publisher = dict["publisher"] as? String
         let publishedDate = dict["publishedDate"] as? String
         let desc = dict["description"] as? String
-        let industryIdentifers = (dict["industryIdentifiers"] as? [[AnyHashable:Any]])?.flatMap({ Volume.VolumeInfo.IndustryIdentifer.create($0) })
+        let industryIdentifers = (dict["industryIdentifiers"] as? [[AnyHashable:Any]])?.compactMap({ Volume.VolumeInfo.IndustryIdentifer.create($0) })
         let pageCount = dict["pageCount"] as? Int
         let dimensions = (dict["dimensions"] as? [AnyHashable:Any]).flatMap(Dimensions.create)
         let printType = dict["printType"] as? String
